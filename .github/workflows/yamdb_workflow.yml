@@ -46,7 +46,7 @@ jobs:
           file: api_yamdb/Dockerfile
           context: api_yamdb/
           push: true
-          tags: usolev/api_yamdb:latest 
+          tags: antonenkoelena/quirky_blackwell:latest 
 
   deploy:
     runs-on: ubuntu-latest
