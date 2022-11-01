@@ -15,6 +15,7 @@ services:
 
   web:
     container_name: web
+    build: .
     image: antonenkoelena/api_yamdb:latest
     restart: always
     volumes:
