@@ -46,7 +46,7 @@ jobs:
           context: api_yamdb/
           push: true
           tags: antonenkoelena/quirky_blackwell:latest 
-  яdeploy:
+  deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     if: github.ref == 'refs/heads/master' || 'refs/heads/main'
