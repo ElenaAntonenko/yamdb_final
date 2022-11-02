@@ -130,7 +130,7 @@ jobs:
           file: api_yamdb/Dockerfile
           context: api_yamdb/
           push: true
-          tags: usolev/api_yamdb:latest 
+          tags: antonenkoelena/api_yamdb:latest 
 
   deploy:
     runs-on: ubuntu-latest
