@@ -15,8 +15,7 @@ services:
 
   web:
     container_name: web
-    build: .
-    # image: antonenkoelena/api_yamdb:latest
+    image: antonenkoelena/quirky_blackwell:latest
     restart: always
     volumes:
       - static_value:/app/static/
