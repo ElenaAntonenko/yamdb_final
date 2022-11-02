@@ -86,35 +86,6 @@
 #         message: ${{ github.workflow }} успешно выполнен!
 
 
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@ElenaAntonenko 
-appleboy
-/
-scp-action
-Public
-Code
-Issues
-48
-Pull requests
-Actions
-Projects
-Security
-Insights
-scp-action/.github/workflows/ci.yml
-@dependabot
-dependabot chore(deps): bump actions/checkout from 1 to 3 (#81)
-…
-Latest commit 6291b9e on 15 Jun
- History
- 2 contributors
-@appleboy@dependabot
-64 lines (58 sloc)  1.66 KB
 
 name: scp files
 on: [push]
