@@ -1,12 +1,13 @@
 import datetime as dt
 
-from core.models import User
 from django.contrib.auth import authenticate
 from django.core.validators import MaxValueValidator
 from rest_framework import exceptions, serializers
 from rest_framework_simplejwt.serializers import TokenObtainSerializer
 from rest_framework_simplejwt.settings import api_settings
 from rest_framework_simplejwt.tokens import AccessToken
+
+from core.models import User
 from reviews.models import Category, Comment, Genre, Review, Title
 
 from .utils import send_email

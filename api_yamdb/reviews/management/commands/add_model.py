@@ -1,11 +1,11 @@
 import csv
 import os
 
-from core.models import User
 from django.core.management.base import BaseCommand
-from reviews.models import Category, Comment, Genre, Review, Title
 
 from api_yamdb.settings import BASE_DIR
+from core.models import User
+from reviews.models import Category, Comment, Genre, Review, Title
 
 
 class Command(BaseCommand):
