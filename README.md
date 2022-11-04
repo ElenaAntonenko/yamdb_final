@@ -1,4 +1,3 @@
-https://github.com/github/docs/actions/workflows/yamdb_workflow.yml/badge.svg
 51.250.21.73
 # YaMDb API
 ![Python version](https://img.shields.io/badge/python-3.7-yellow) 
