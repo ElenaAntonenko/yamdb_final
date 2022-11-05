@@ -1,43 +1,84 @@
-version: '3.8'
+# version: '3.8'
 
+# services:
+#   db:
+#     image: postgres:13.0-alpine
+#     container_name: postgres13
+#     # environment:
+#     #   POSTGRES_DB: ${DB_NAME}
+#     #   POSTGRES_USER: ${POSTGRES_USER}
+#     #   POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+#     volumes:
+#       - db_value: /var/lib/postgresql/data/
+#     env_file:
+#       - ./.env
+
+#   web:
+#     container_name: web
+#     image: antonenkoelena/yamdb:latest
+#     restart: always
+#     volumes:
+#       - static_value:/app/static/
+#       - media_value:/app/media/
+#     depends_on:
+#       - db
+#     env_file:
+#       - ./.env
+
+#   nginx:
+#     container_name: nginx
+#     image: nginx:1.21.3-alpine
+#     ports:
+#       - "80:80"
+#     volumes:
+#       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+#       - static_value:/var/html/static/
+#       - media_value:/var/html/media/
+#     depends_on:
+#       - web
+
+# volumes:
+#   static_value:
+#   media_value:
+#   db_value:
+
+version: '3.8'
 services:
+  # Database container
   db:
     image: postgres:13.0-alpine
-    container_name: postgres13
-    # environment:
-    #   POSTGRES_DB: ${DB_NAME}
-    #   POSTGRES_USER: ${POSTGRES_USER}
-    #   POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - db_value: /var/lib/postgresql/data/
+      - database:/var/lib/postgresql/data/
     env_file:
       - ./.env
-
+  # Web application container
   web:
-    container_name: web
     image: antonenkoelena/yamdb:latest
+    #build: .
     restart: always
     volumes:
-      - static_value:/app/static/
-      - media_value:/app/media/
+      - static:/app/static/
+      - media:/app/media/
+      - ./settings.py:/app/api_yamdb/settings.py
     depends_on:
       - db
     env_file:
       - ./.env
-
+    entrypoint: gunicorn api_yamdb.wsgi:application --bind 0:8000
+  # Nginx server container
   nginx:
-    container_name: nginx
     image: nginx:1.21.3-alpine
     ports:
       - "80:80"
     volumes:
+      # Bind mount nginx config file
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - static_value:/var/html/static/
-      - media_value:/var/html/media/
+      # Bind static and media volumes (shared with web application)
+      - static:/var/html/static/
+      - media:/var/html/media/
     depends_on:
       - web
-
 volumes:
-  static_value:
-  media_value:
-  db_value:
+  static:
+  media:
+  database:
