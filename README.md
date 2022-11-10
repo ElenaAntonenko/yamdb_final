@@ -1,4 +1,4 @@
-51.250.21.73
+ http://84.252.137.145/admin/login/?next=/admin/
 # YaMDb API
 ![Python version](https://img.shields.io/badge/python-3.7-yellow) 
 ![Django version](https://img.shields.io/badge/django-2.2-orange) 
